@@ -1,0 +1,15 @@
+import math
+
+m=int(input())
+n=int(input())
+
+l=[]
+
+for i in range(math.ceil(m**0.5),math.floor(n**0.5)+1):
+    l+=[i**2]
+
+if len(l)==0:
+    print(-1)
+else:
+    print(sum(l))
+    print(math.ceil(m**0.5)**2)
