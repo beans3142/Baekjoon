@@ -1,4 +1,3 @@
-﻿  23031 에이쁠주세요.cpp
-C:\Users\유완규\git\BAEKJOON\백준 C\23031 에이쁠주세요.cpp(54,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-C:\Users\유완규\git\BAEKJOON\백준 C\23031 에이쁠주세요.cpp(77,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+﻿  20361 비교용.cpp
+C:\Users\유완규\git\BAEKJOON\백준 C\20361 비교용.cpp(51,23): warning C4018: '<=': signed 또는 unsigned가 일치하지 않습니다.
   백준 C.vcxproj -> C:\Users\유완규\git\BAEKJOON\백준 C\Debug\백준 C.exe
