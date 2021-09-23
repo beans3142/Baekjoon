@@ -1,3 +1,4 @@
-﻿  20361 비교용.cpp
-C:\Users\유완규\git\BAEKJOON\백준 C\20361 비교용.cpp(51,23): warning C4018: '<=': signed 또는 unsigned가 일치하지 않습니다.
+﻿  scanf활용.c
+C:\Users\유완규\git\BAEKJOON\백준 C\scanf활용.c(8,9): warning C4477: 'printf' : 서식 문자열 '%n'에 'int *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'char *'입니다.
+C:\Users\유완규\git\BAEKJOON\백준 C\scanf활용.c(8,9): message : 서식 문자열에서 '%hhn'을(를) 사용하는 것이 좋습니다.
   백준 C.vcxproj -> C:\Users\유완규\git\BAEKJOON\백준 C\Debug\백준 C.exe
