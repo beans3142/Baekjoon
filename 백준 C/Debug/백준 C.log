@@ -1,4 +1,5 @@
-﻿  1528 금민수합.c
-C:\Users\유완규\git\BAEKJOON\백준 C\1528 금민수합.c(22,10): warning C4098: 'dfs': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\유완규\git\BAEKJOON\백준 C\1528 금민수합.c(27,2): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+﻿  테스트용.cpp
+C:\Users\유완규\git\BAEKJOON\백준 C\테스트용.cpp(12,5): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\유완규\git\BAEKJOON\백준 C\테스트용.cpp(16,5): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\유완규\git\BAEKJOON\백준 C\테스트용.cpp(19,5): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   백준 C.vcxproj -> C:\Users\유완규\git\BAEKJOON\백준 C\Debug\백준 C.exe
