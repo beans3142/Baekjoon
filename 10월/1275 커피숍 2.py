@@ -4,7 +4,7 @@ input=stdin.readline
 
 n,q=map(int,input().split())
 arr=[0]+list(map(int,input().split()))+[0]
-h_tree=2**(ceil(log2(n)+1))
+h_tree=2**(ceil(log2(n)+2))
 tree=[0 for i in range(h_tree)]
 
 def init(l,r,node):
