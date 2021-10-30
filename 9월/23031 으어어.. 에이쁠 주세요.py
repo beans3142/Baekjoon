@@ -71,3 +71,44 @@ if zom_meet:
 else:
     print("Phew...")
 
+
+"""
+회전 제대로 되었는지 체크
+4
+FLFFRFF
+OOZO
+OOSO
+OOOO
+OZOO
+
+4
+FLFFFF
+OZZZ
+OSZZ
+OZZZ
+OZZZ
+
+AaaaH
+
+스위치 중복 체크
+6
+FFF
+OOOOOO
+SOOOOO
+SOOOOO
+OOOOOO
+OOOOOO
+ZOOOOO
+
+phew
+
+좀비 움직임 제대로 되어있는지 체크
+4
+FFFLFFF
+OOOO
+OZOO
+OOZO
+OOOZ
+
+phew
+"""
