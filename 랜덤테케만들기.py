@@ -10,8 +10,44 @@ for i in range(a):
     '''
 
 # 2295 세수의 합
-
+'''
 n=randint(1,1000)
 for i in sample(range(-2*10**8,2*10**8),1000):
     print(i)
-    
+
+    '''
+
+n=randint(1,6)
+print(n)
+for i in range(n):
+    print(randint(0,100))
+
+
+"""
+7
+388
+33
+911
+250
+717
+997
+375
+
+7
+10
+3
+15
+5
+7
+9
+3
+
+7
+7
+6
+5
+4
+3
+2
+1
+"""
