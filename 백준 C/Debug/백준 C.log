@@ -1,5 +1,4 @@
-﻿  테스트용.cpp
-C:\Users\유완규\git\BAEKJOON\백준 C\테스트용.cpp(12,5): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\유완규\git\BAEKJOON\백준 C\테스트용.cpp(16,5): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\유완규\git\BAEKJOON\백준 C\테스트용.cpp(19,5): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+﻿  질문받은거.cpp
+C:\Users\유완규\git\BAEKJOON\백준 C\질문받은거.cpp(62,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\유완규\git\BAEKJOON\백준 C\질문받은거.cpp(89,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   백준 C.vcxproj -> C:\Users\유완규\git\BAEKJOON\백준 C\Debug\백준 C.exe
