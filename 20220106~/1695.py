@@ -1,7 +1,7 @@
 from sys import stdin
 input=stdin.readline
-
-s1=input().rstrip()
+n=int(input())
+s1=list(map(int,input().split()))
 s2=s1[::-1]
 dp=[[0 for i in range(len(s1)+1)] for i in range(len(s1)+1)]
 
