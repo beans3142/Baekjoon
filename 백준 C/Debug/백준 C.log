@@ -1,5 +1,4 @@
-﻿  linked_queue.cpp
-C:\Users\유완규\git\BAEKJOON\백준 C\linked_queue.cpp(41,2): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\유완규\git\BAEKJOON\백준 C\linked_queue.cpp(45,3): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\유완규\git\BAEKJOON\백준 C\linked_queue.cpp(48,4): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+﻿  또ㅔ스트.cpp
+C:\Users\유완규\git\BAEKJOON\백준 C\또ㅔ스트.cpp(29,12): warning C4244: '=': 'double'에서 '__int64'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\유완규\git\BAEKJOON\백준 C\또ㅔ스트.cpp(30,5): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   백준 C.vcxproj -> C:\Users\유완규\git\BAEKJOON\백준 C\Debug\백준 C.exe
