@@ -1,37 +1,45 @@
-import sys
-from heapq import heappush,heappop
+arr=[]
+num=[]
+bingo=0
 
-input=sys.stdin.readline
-inf=sys.maxsize
+for _ in range(5):
+  arr.append(list(map(int,input().split())))
 
-n,m=map(int,input().split())
+for _ in range(5):
+  num+=list(map(int,input().split()))
 
-city={i:[]for i in range(1,n+1)}
 
-for i in range(m):
-    u,v,w=map(int,input().split())
-    city[u].append([v,w])
-    city[v].append([u,w])
+for k in range(len(num)):
+  for i in range(5):
+    for j in range(5):
+      cnt=0
+      if arr[i][j]==num[k]:
+        arr[i][j]=-1
+        bingo+=1
 
-n1,n2=map(int,input().split())
+      for m in range(5):
+        xcnt=0
+        for n in range(5):
+          if arr[m][n]==-1:
+            xcnt+=1
+        if xcnt==5:
+          cnt+=1
 
-def diik(start):
-    cost=[inf] *(n+1)
-    cost[start]=0
+      for m in range(5):
+        ycnt=0
+        for n in range(5):
+          if arr[n][m]==-1:
+            ycnt+=1
+        if ycnt==5:
+          cnt+=1
 
-    travel=[(0,start)]
+      if arr[0][0]==-1 and arr[1][1]==-1 and arr[2][2]==-1 and arr[3][3]==-1 and arr[4][4]==-1:
+        cnt+=1
 
-    while travel:
-        price,now=heappop(travel)
-        if cost[now]<price:
-            continue
-        for nextcity,val in city[now]:
-            if cost[nextcity]>price+val:
-                cost[nextcity]=price+val
-                heappush(travel,(price+val,nextcity))
-    return cost
+      if arr[0][4]==-1 and arr[1][3]==-1 and arr[2][2]==-1 and arr[3][1]==-1 and arr[4][0]==-1:
+        cnt+=1
 
-first=diik(1)
-going1,going2=diik(n1),diik(n2)
-road=min(going1[n2]+going2[n]+first[n1],going2[n1]+going1[n]+first[n2])
-print(road if road<inf else -1)
+      if cnt>=3:
+        print(bingo)
+        exit()
+      
