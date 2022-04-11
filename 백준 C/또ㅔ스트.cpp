@@ -1,44 +1,22 @@
-#include <cstdio>
+#include <iostream>
+#include <math.h>
 
-long long int K;
-long long int low, high;
-long long int mobius[1000001];
+using namespace std;
 
-/*
- * GOAL: Set Mobius function
- */
-void buildMobius() {
-    mobius[1] = 1;
-    for (int i = 1; i <= 1000000; i++) {
-        if (mobius[i] != 0)
-            for (int j = 2 * i; j <= 1000000; j += i) {
-                mobius[j] -= mobius[i];
-            }
-    }
-}
+int main()
+{
+	cin.tie(0);
+	cout.tie(0);
+	ios_base::sync_with_stdio(0);
 
-long long int squareFree(long long int n) {
-    long long int k = 0;
-    for (long long int i = 1; i * i <= n; ++i)
-        k += (mobius[i] * (n / (i * i)));
-    return k;
-}
-
-int main() {
-    low = 0;
-    high = 2e9;
-    scanf("%lld", &K);
-    buildMobius();
-    while (low + 1 < high) {
-        long long int mid = (low + high) / 2;
-        long long int p = squareFree(mid);
-        printf("%lld\n", p);
-        if (squareFree(mid) < K)
-            low = mid;
-        else high = mid;
-    }
-
-    printf("%lld", high);
-
-    return 0;
+	long long int n, m, div, ans=0;
+	cin >> n >> m;
+	ans = m - n + 1;
+	for (int i = 1; i < 100; i++)
+	{
+		div = pow(2, i);
+		if (div > m) break;
+		ans += ((m / div - (n - 1) / div) * (div / 2));
+	}
+	cout << ans;
 }
