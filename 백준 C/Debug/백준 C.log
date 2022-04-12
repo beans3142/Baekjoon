@@ -1,3 +1,2 @@
 ﻿  또ㅔ스트.cpp
-C:\Users\유완규\git\BAEKJOON\백준 C\또ㅔ스트.cpp(17,12): warning C4244: '=': 'double'에서 '__int64'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  백준 C.vcxproj -> C:\Users\유완규\git\BAEKJOON\백준 C\Debug\백준 C.exe
+LINK : fatal error LNK1168: C:\Users\유완규\git\BAEKJOON\백준 C\Debug\백준 C.exe을(를) 쓰기용으로 열 수 없습니다.

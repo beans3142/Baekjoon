@@ -1,22 +1,47 @@
 #include <iostream>
-#include <math.h>
+#include<vector>
+#include<stack>
+#include<algorithm>
+#define MAX 1000
+//각 숫자에서 부모노드로 가면서 숫자 세기
 
 using namespace std;
 
-int main()
-{
-	cin.tie(0);
-	cout.tie(0);
-	ios_base::sync_with_stdio(0);
+int main() {
+    int N, X, Y, a, b, root = 0, cnt = 0;
 
-	long long int n, m, div, ans=0;
-	cin >> n >> m;
-	ans = m - n + 1;
-	for (int i = 1; i < 100; i++)
-	{
-		div = pow(2, i);
-		if (div > m) break;
-		ans += ((m / div - (n - 1) / div) * (div / 2));
-	}
-	cout << ans;
+    vector<int> v(MAX); //index 자식 value 부모
+    stack<int> st;
+    int depth[1001] = { 0, };
+    depth[0] = 1;
+
+    cin >> N >> X >> Y;
+
+    for (int i = 0; i < N; i++) { //setting
+        cin >> a >> b; //a는 부모노드 b는 자식노드 
+        depth[b] = depth[a] + 1;
+        v[b] = a;
+    }
+    while (depth[X] > depth[Y])
+    {
+        X = v[X];
+    }
+    while (depth[Y] > depth[X])
+    {
+        Y = v[Y];
+    }
+    while (X != Y) {//부모 노드가 같으면 cnt 멈추기
+
+        if (X != Y && X != root) {
+            X = v[X];
+            cnt++;
+        }
+        if (X != Y && Y != root) {
+            Y = v[Y];
+            cnt++;
+        }
+    }
+    cout << cnt;
+
+    return 0;
 }
