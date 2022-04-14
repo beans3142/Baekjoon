@@ -1,20 +1,16 @@
-arr=[[10 for _ in range(7)] for _ in range(7)]
-arr2=[list(map(int,input().split())) for i in range(5)]
-tochange=[]
+def is_divide_pt(x11,y11, x12,y12, x21,y21, x22,y22):
 
-for i in range(5):
-  for j in range(5):
-    arr[1+i][1+j]=arr2[i][j]
-    
-for i in range(1,6):
-  for j in range(1,6):
-    if arr[i][j]<arr[i+1][j] and arr[i][j]<arr[i][j+1] and arr[i][j]<arr[i-1][j] and arr[i][j]<arr[i][j-1]:
-      tochange.append([i,j])
+    f1= (x12-x11)*(y21-y11) - (y12-y11)*(x21-x11)
+    f2= (x12-x11)*(y22-y11) - (y12-y11)*(x22-x11)
+    if f1*f2 < 0 :
+      return True
+    else:
+      return False
 
-for x,y in tochange:
-    arr[x][y]='*'
+def is_cross_pt(x11,y11, x12,y12, x21,y21, x22,y22):
+    b1 = is_divide_pt(x11,y11, x12,y12, x21,y21, x22,y22)
+    b2 = is_divide_pt(x21,y21, x22,y22, x11,y11, x12,y12)
+    if b1 and b2:
+        return True
+    return False
 
-for i in range(1,6):
-  for j in range(1,6):
-    print(arr[i][j],end=" ")
-  print("")
