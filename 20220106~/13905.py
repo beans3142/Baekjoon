@@ -49,5 +49,6 @@ while hq:
     if find(a)!=find(b):
         union(a,b,-c)
 
-print(bfs(s))
+ans=bfs(s)
+print(ans if ans else 0)
 
