@@ -1,26 +1,64 @@
-from sys import stdin
+from time import *
+from sys import *
+setrecursionlimit(100000)
 input=stdin.readline
 
-n,m=map(int,input().split())
-par=[i for i in range(n+1)]
+n=int(input())
+arr=[list(map(int,input().split())) for i in range(n)]
+now=time()
+rdiag={}
+for i in range(-n,n):
+    rdiag[i]=0
+ans=0
+able=2*n-1
+mxlen=2*n-1
 
-def find(x):
-    if x==par[x]:
-        return x
-    par[x]=find(par[x])
-    return par[x]
+def bt(idx,cnt):
+    global ans
+    left=0
+    if idx==mxlen:
+        ans=max(ans,cnt)
+        return
 
-def union(a,b):
-    a=find(a)
-    b=find(b)
-    if par[a]<par[b]:
-        par[b]=par[a]
-    elif par[b]<par[a]:
-        par[a]=par[b]
+    for i in range(idx,mxlen):
+        for j in range(i+1):
+            k=i-j
+            if -1<j<n and -1<k<n and rdiag[k-j]==0:
+                left+=1
+                break
+                
+    if left+cnt<=ans:
+        return
+    
+    for i in range(idx+1):
+        j=idx-i
+        if -1<i<n and -1<j<n and arr[i][j]==1 and rdiag[j-i]==0:
+            rdiag[j-i]=1
+            bt(idx+1,cnt+1)
+            rdiag[j-i]=0
+    bt(idx+1,cnt)
 
-for i in range(m):
-    a,b=map(int,input().split())
-    union(a,b)
+bt(0,0)
 
+print(ans)
+print(time()-now)
 
-print(len(set(par))-1)
+'''
+7
+1 1 1 1 1 1 1
+1 1 1 1 1 1 1
+1 1 1 1 1 1 1
+1 1 1 1 1 1 1
+1 1 1 1 1 1 1
+1 1 1 1 1 1 1
+1 1 1 1 1 1 1
+8
+1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1
+'''
