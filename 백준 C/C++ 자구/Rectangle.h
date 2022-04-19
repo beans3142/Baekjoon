@@ -20,15 +20,14 @@ public:
 		return width*height;
 	}
 
-	friend std::istream& operator >> (std::istream &in, Rectangle &Rectangle)
+	friend std::istream& operator   >>  (std::istream &in, Rectangle &Rectangle)
 	{
-		std::cout << "input " << Rectangle.id << "th Rectangle's x,y,width,height :  ";
 		in >> Rectangle.xLow >> Rectangle.yLow >> Rectangle.width >> Rectangle.height;
 		return in;
 	}
 
 	friend std::ostream& operator <<(std::ostream&, Rectangle&);
-
+	Rectangle operator &(Rectangle&);
 	Rectangle operator and(Rectangle&);
 	Rectangle operator +(Rectangle&);
 };
