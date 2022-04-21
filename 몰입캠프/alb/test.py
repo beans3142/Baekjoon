@@ -1,11 +1,11 @@
-from time import *
-
-s=list('abcdabcdabcd'*15)
-now=time()
-for i in range(len(s)):
-  print(s[i],end='')
-print("")
-print(time()-now)
-now=time()
-print(''.join(s))
-print(time()-now)
+n=int(input())
+towers=[(i,idx) for idx,i in enumerate(list(map(int,input().split())))]
+stack=[]
+ans=[0]*n
+for i in range(n):
+    while stack and stack[-1][0]<towers[~i][0]:
+        val,loc=stack.pop()
+        ans[loc]=towers[~i][1]+1
+    stack.append(towers[~i])
+    print(stack)
+print(*ans)

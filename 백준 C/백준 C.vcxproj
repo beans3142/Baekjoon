@@ -19,11 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C++ 자구\main.cpp" />
-    <ClCompile Include="C++ 자구\Rectangle.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="C++ 자구\Rectangle.h" />
+    <ClCompile Include="ALVA.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
