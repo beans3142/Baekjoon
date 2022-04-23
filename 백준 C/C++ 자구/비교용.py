@@ -17,22 +17,17 @@ while True:
         x3, y3 = rect2[0], rect2[1] 
         x4, y4 = rect2[2], rect2[3]
 
-        ## case1 오른쪽으로 벗어나 있는 경우
+        if x2 < x3:
+            return "Null"
 
-        if x2 <= x3:
-            return 0,0,0,0
+        if x1 > x4:
+            return "Null"
 
-        ## case2 왼쪽으로 벗어나 있는 경우
-        if x1 >= x4:
-            return 0,0,0,0
+        if  y2 < y3:
+            return "Null"
 
-        ## case3 위쪽으로 벗어나 있는 경우
-        if  y2 <= y3:
-            return 0,0,0,0
-
-        ## case4 아래쪽으로 벗어나 있는 경우
-        if  y1 >= y4:
-            return 0,0,0,0
+        if  y1 > y4:
+            return "Null"
 
         left_up_x = max(x1, x3)
         left_up_y = max(y1, y3)
@@ -41,8 +36,12 @@ while True:
 
         width = right_down_x - left_up_x
         height =  right_down_y - left_up_y
-      
-        return left_up_x,left_up_y,width, height
+
+        if height==0 and width==0:
+            return "POINT"
+        elif height==0 or width==0:
+            return "LINE"
+        return "FACE"
 
     print(*cia(a,b))
     #print()
