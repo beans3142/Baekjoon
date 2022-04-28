@@ -1,30 +1,25 @@
-## template
-## deque로 구현 가능할거 같다
-## a b c d 순차적으로 넣었을대 bacd조합이 가능하면 명령어들 출력 아니면 impossible
-## abcd는 bacd의 정렬 문자이기 때문에 정렬을 시켜준 후 순차적으로 앞의 문자를 꺼내준 후 스택에 쌓아 준다.
-## stack제일 마지막값과 현재 문자와 같다면 pop 아니면 계속 푸쉬 
-## 최종적으로 stack이 비워져있으면 통과 아니면 impossible
-
+from sys import stdin
 from collections import deque
-x = list(input())
-y = x[:]
-y.sort()
-x = deque(x)
-y = deque(y)
-stack = []
-command = []
-while len(y)>=0:
-  if len(stack)>0 and stack[len(stack)-1] == x[0]:
-    stack.pop()
-    x.popleft()
-    command.append('pop')
-    if len(y) ==0:
-      break
-  else:
-    stack.append(y.popleft())  
-    command.append('push')
-if len(stack)==0:
-  for i in command:
-    print(i)
-else:
-  print('impossible')
+input=stdin.readline
+
+n,m=map(int,input().split())
+dx=[0,0,1,-1]
+dy=[1,-1,0,0]
+
+maze=[list(map(int,input().split())) for i in range(n)]
+vi=[[0 for i in range(m)] for i in range(n)]
+
+queue=deque([(0,n-1)])
+vi[n-1][0]=1
+
+while queue:
+    x,y=queue.popleft()
+    for i in range(4):
+        nx=x+dx[i]
+        ny=y+dy[i]
+        if -1<nx<m and -1<ny<n:
+            if maze[ny][nx]==0 and vi[ny][nx]==0:
+                vi[ny][nx]=vi[y][x]+1
+                queue.append((nx,ny))
+
+print(vi[0][m-1]-1)
