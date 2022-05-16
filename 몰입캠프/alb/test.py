@@ -1,31 +1,105 @@
-## template
-from collections import deque
+import sys
 
-n=int(input())
-check=[-1]*1000000
-check[1]=0
+def main():
+    p, v = map(int, sys.stdin.readline().split())
+    partyDict = {}
+    seatSum = 0
+    validVoteSum = 0
 
-def bfs():
-  global n
-  arr=deque()
-  arr.append(1)
-  
-  while not len(arr)==0:
-    x=arr.popleft()
+    # parsing area
+    for _ in range(p):
+        name, seat, vote = map(str, sys.stdin.readline().split())
+        seat = int(seat)
+        vote = int(vote)
+        partyDict[name] = [_ + 1, seat, vote]
+        seatSum += seat
+        validVoteSum += vote
     
-    myVal=x*2
-    if myVal>=1 and myVal<=99999 and check[myVal]==-1:
-      check[myVal]=check[x]+1
-      arr.append(myVal)
-      if myVal==n:
-        break
-      
-    myVal=x//3
-    if myVal>=1 and myVal<=99999 and check[myVal]==-1:
-      check[myVal]=check[x]+1
-      arr.append(myVal)
-      if myVal==n:
-        break
-      
-bfs()
-print(check[n])
+    # check other values
+    noPartySeat = 253 - seatSum
+    
+    # check valid party
+    validParty = []
+    ratioValidVoteSum = 0
+    invalidPartyCnt = noPartySeat
+    for i in partyDict:
+        ratio = partyDict[i][2] / validVoteSum
+        validFlag = False
+        if ratio >= 0.03 or partyDict[i][1] >= 5:
+            validFlag = True
+            validParty.append(i)
+            ratioValidVoteSum += partyDict[i][2]
+        else:
+            invalidPartyCnt += partyDict[i][1]
+        partyDict[i] += [ratio, validFlag]
+    
+    # update valid party ratio
+    ratioSeatDict = {}
+    for i in validParty:
+        ratioSeatDict[i] = [partyDict[i][2] / ratioValidVoteSum]
+    
+    # calculate ratio seat
+    validSeatSum = 0
+    for i in ratioSeatDict:
+        temp = ((300 - invalidPartyCnt) * ratioSeatDict[i][0] - partyDict[i][1]) / 2
+        seat = 0
+        if temp < 1:
+            seat = 0
+        else:
+            seat = int(temp)
+            if temp - int(temp) >= 0.5:
+                seat += 1
+        ratioSeatDict[i].append(seat)
+        validSeatSum += seat
+    
+    # update ratio seat to 30
+    if validSeatSum > 30:
+        underPriority = []
+        newSeatSum = 0
+        for i in ratioSeatDict:
+            newSeat = 30 * ratioSeatDict[i][1] / validSeatSum
+            underPriority.append([-(newSeat - int(newSeat)), partyDict[i][0], i])
+            ratioSeatDict[i][1] = int(newSeat)
+            newSeatSum += int(newSeat)
+        underPriority.sort()
+        for i in range(30 - newSeatSum):
+            ratioSeatDict[underPriority[i][2]][1] += 1
+    
+    elif validSeatSum < 30:
+        underPriority = []
+        newSeatSum = 0
+        for i in ratioSeatDict:
+            newSeat = ratioSeatDict[i][1] + (30 - validSeatSum) * ratioSeatDict[i][0]
+            underPriority.append([-(newSeat - int(newSeat)), partyDict[i][0], i])
+            ratioSeatDict[i][1] = int(newSeat)
+            newSeatSum += int(newSeat)
+        underPriority.sort()
+        for i in range(30 - newSeatSum):
+            ratioSeatDict[underPriority[i][2]][1] += 1
+    
+    # calculate left 17 seats
+    underPriority = []
+    leftSeatSum = 0
+    for i in ratioSeatDict:
+        leftSeat = 17 * ratioSeatDict[i][0]
+        leftSeatSum += int(leftSeat)
+        ratioSeatDict[i][1] += int(leftSeat)
+        underPriority.append([-(leftSeat - int(leftSeat)), partyDict[i][0], i])
+    underPriority.sort()
+    for i in range(17 - leftSeatSum):
+        ratioSeatDict[underPriority[i][2]][1] += 1
+
+    # final seat caluculate
+    finalSeatList = []
+    for i in partyDict:
+        seat = partyDict[i][1]
+        if partyDict[i][4]:
+            seat += ratioSeatDict[i][1]
+        finalSeatList.append([-seat, i])
+    finalSeatList.sort()
+    for i in finalSeatList:
+        print(i[1], -i[0])
+    return
+
+if __name__ == "__main__":
+    main()
