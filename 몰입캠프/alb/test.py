@@ -1,105 +1,36 @@
-import sys
+n,m=map(int,input().split())
+arr=[0]*n # ⓐ 어차피 n자리는 고정이므로 *n
+visited=[False]*10 # ⓑ 0~9 사용 체크
 
-def main():
-    p, v = map(int, sys.stdin.readline().split())
-    partyDict = {}
-    seatSum = 0
-    validVoteSum = 0
+# ⓒ 항상 n<=m 이여야 출력이 정상적으로 작동합니다.
+#    그 이유는 사용할 수 있는 숫자 m개보다 n이 큰 경우 cur이 n까지 도달하지 못합니다. 
+#    m은 0~10 사이의 수이여야 합니다.
 
-    # parsing area
-    for _ in range(p):
-        name, seat, vote = map(str, sys.stdin.readline().split())
-        seat = int(seat)
-        vote = int(vote)
-        partyDict[name] = [_ + 1, seat, vote]
-        seatSum += seat
-        validVoteSum += vote
-    
-    # check other values
-    noPartySeat = 253 - seatSum
-    
-    # check valid party
-    validParty = []
-    ratioValidVoteSum = 0
-    invalidPartyCnt = noPartySeat
-    for i in partyDict:
-        ratio = partyDict[i][2] / validVoteSum
-        validFlag = False
-        if ratio >= 0.03 or partyDict[i][1] >= 5:
-            validFlag = True
-            validParty.append(i)
-            ratioValidVoteSum += partyDict[i][2]
-        else:
-            invalidPartyCnt += partyDict[i][1]
-        partyDict[i] += [ratio, validFlag]
-    
-    # update valid party ratio
-    ratioSeatDict = {}
-    for i in validParty:
-        ratioSeatDict[i] = [partyDict[i][2] / ratioValidVoteSum]
-    
-    # calculate ratio seat
-    validSeatSum = 0
-    for i in ratioSeatDict:
-        temp = ((300 - invalidPartyCnt) * ratioSeatDict[i][0] - partyDict[i][1]) / 2
-        seat = 0
-        if temp < 1:
-            seat = 0
-        else:
-            seat = int(temp)
-            if temp - int(temp) >= 0.5:
-                seat += 1
-        ratioSeatDict[i].append(seat)
-        validSeatSum += seat
-    
-    # update ratio seat to 30
-    if validSeatSum > 30:
-        underPriority = []
-        newSeatSum = 0
-        for i in ratioSeatDict:
-            newSeat = 30 * ratioSeatDict[i][1] / validSeatSum
-            underPriority.append([-(newSeat - int(newSeat)), partyDict[i][0], i])
-            ratioSeatDict[i][1] = int(newSeat)
-            newSeatSum += int(newSeat)
-        underPriority.sort()
-        for i in range(30 - newSeatSum):
-            ratioSeatDict[underPriority[i][2]][1] += 1
-    
-    elif validSeatSum < 30:
-        underPriority = []
-        newSeatSum = 0
-        for i in ratioSeatDict:
-            newSeat = ratioSeatDict[i][1] + (30 - validSeatSum) * ratioSeatDict[i][0]
-            underPriority.append([-(newSeat - int(newSeat)), partyDict[i][0], i])
-            ratioSeatDict[i][1] = int(newSeat)
-            newSeatSum += int(newSeat)
-        underPriority.sort()
-        for i in range(30 - newSeatSum):
-            ratioSeatDict[underPriority[i][2]][1] += 1
-    
-    # calculate left 17 seats
-    underPriority = []
-    leftSeatSum = 0
-    for i in ratioSeatDict:
-        leftSeat = 17 * ratioSeatDict[i][0]
-        leftSeatSum += int(leftSeat)
-        ratioSeatDict[i][1] += int(leftSeat)
-        underPriority.append([-(leftSeat - int(leftSeat)), partyDict[i][0], i])
-    underPriority.sort()
-    for i in range(17 - leftSeatSum):
-        ratioSeatDict[underPriority[i][2]][1] += 1
+def recur(cur): # 중복 없이 출력
+  if cur==n:
+    print(*arr,sep='') # ⓔ 파이썬에서 한자리씩 출력하는 것은 매우 안좋습니다.
+                       #    해당 부분을 고쳐준 것으로 40% 가량 빨라졌습니다.
+    return
+  for i in range(m):
+    if visited[i]:
+      continue
 
-    # final seat caluculate
-    finalSeatList = []
-    for i in partyDict:
-        seat = partyDict[i][1]
-        if partyDict[i][4]:
-            seat += ratioSeatDict[i][1]
-        finalSeatList.append([-seat, i])
-    finalSeatList.sort()
-    for i in finalSeatList:
-        print(i[1], -i[0])
+    arr[cur]=i
+    visited[i]=True
+    recur(cur+1)
+    visited[i]=False
+
+recur(0)
+
+# 밑의 함수는 위의 함수와 달리 중복이 가능하도록 출력하는 것 입니다!
+
+
+def recur(cur): # 중복 가능하게 출력 n은 상관 없고 m만 0~10 사이면 가능.
+  if cur==n:
+    print(*arr,sep='') 
     return
 
-if __name__ == "__main__":
-    main()
+  for i in range(m):
+    arr[cur]=i
+    recur(cur+1)
+
