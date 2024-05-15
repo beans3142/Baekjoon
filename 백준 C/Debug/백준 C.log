@@ -1,3 +1,2 @@
-﻿  테스트용용.cpp
-C:\Users\유완규\git\BAEKJOON\백준 C\테스트용용.cpp(10,13): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+﻿  12004.cpp
   백준 C.vcxproj -> C:\Users\유완규\git\BAEKJOON\백준 C\Debug\백준 C.exe

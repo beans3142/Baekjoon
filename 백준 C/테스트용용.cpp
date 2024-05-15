@@ -1,29 +1,39 @@
-#include<cstdio>
-#include<cstring>
-#include<algorithm>
-using namespace std;
-typedef long long ll;
-const int s[] = { 6,2,5,5,4,5,6,3,7,5,6 };
-int a[15], n, d;
-ll num, po = 1, dp[2][16][106];
-int main() {
-    while (~scanf("%1d", a + n)) {
-        num = num * 10 + a[n];
-        d += s[a[n++]];
-        po *= 10;
-    }
-    fill(&dp[0][0][0], &dp[1][15][106], po * 2);
-    dp[0][n][0] = 0;
-    long long p = 1;
-    for (int i = n; i--; p *= 10) {
-        for (int j = 0; j < 10; j++) {
-            for (int k = s[j]; k < 106; k++) {
-                dp[0][i][k] = min(dp[0][i][k], dp[0][i + 1][k - s[j]] + j * p);
-                if (j > a[i]) dp[1][i][k] = min(dp[1][i][k], dp[0][i + 1][k - s[j]] + j * p);
-            }
-        }
-        for (int j = s[a[i]]; j < 106; j++) dp[1][i][j] = min(dp[1][i][j], dp[1][i + 1][j - s[a[i]]] + a[i] * p);
-    }
-    printf("%lld", min(dp[0][0][d] + po, dp[1][0][d]) - num);
-    return 0;
+#include <stdio.h>
+#include "BST.h"
+
+int main()
+{
+	BST tree;
+	while (1)
+	{
+		int input;
+		printf("안녕\n");
+		printf("사용 가능 명령어\n1 X : 트리에 X값을 갖는 노드 삽입 2 X : 트리에 X 값을 갖는 노드 제거 3 : 트리 모양 보이기 4 : 종료\n 입력 : ");
+		scanf("%d", &input);
+		if (input == 1)
+		{
+			scanf_s("%d", &input);
+			if (tree.Index(input)!=-1)
+			{
+				tree.Append(input);
+			}
+		}
+		else if (input == 2)
+		{
+			scanf_s("%d", &input);
+			if (tree.Index(input))
+			{
+				int idx = tree.Index(input);
+				tree.Delete(idx);
+			}
+		}
+		else if (input==3)
+		{
+			tree.Show();
+		}
+		else
+		{
+			break;
+		}
+	}
 }
