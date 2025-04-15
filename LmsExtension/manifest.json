@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "LMS Extension",
+  "version": "1.0",
+  "description": "This extension modifies the LMS page.",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://lms.kau.ac.kr/*"],
+      "js": ["content.js"]
+    }
+  ]
+}

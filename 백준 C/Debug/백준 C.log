@@ -1,17 +1,2 @@
-﻿  3444.cpp
-C:\Users\유완규\git\BAEKJOON\백준 C\3444.cpp(46,2): error C3861: 'update': 식별자를 찾을 수 없습니다.
-C:\Users\유완규\git\BAEKJOON\백준 C\3444.cpp(47,2): error C3861: 'update': 식별자를 찾을 수 없습니다.
-C:\Users\유완규\git\BAEKJOON\백준 C\3444.cpp(190,2): error C3861: 'lazy': 식별자를 찾을 수 없습니다.
-C:\Users\유완규\git\BAEKJOON\백준 C\3444.cpp(196,4): error C3861: 'lazy': 식별자를 찾을 수 없습니다.
-C:\Users\유완규\git\BAEKJOON\백준 C\3444.cpp(201,3): error C3861: 'lazy': 식별자를 찾을 수 없습니다.
-C:\Users\유완규\git\BAEKJOON\백준 C\3444.cpp(233,2): error C3861: 'interval': 식별자를 찾을 수 없습니다.
-C:\Users\유완규\git\BAEKJOON\백준 C\3444.cpp(320,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-C:\Users\유완규\git\BAEKJOON\백준 C\3444.cpp(324,12): warning C4553: '==': 식의 결과가 사용되지 않습니다. '='을(를) 의도했습니까?
-  splay_tree.cpp
-C:\Users\유완규\git\BAEKJOON\백준 C\splay_tree.cpp(44,2): error C3861: 'update': 식별자를 찾을 수 없습니다.
-C:\Users\유완규\git\BAEKJOON\백준 C\splay_tree.cpp(45,2): error C3861: 'update': 식별자를 찾을 수 없습니다.
-C:\Users\유완규\git\BAEKJOON\백준 C\splay_tree.cpp(188,2): error C3861: 'lazy': 식별자를 찾을 수 없습니다.
-C:\Users\유완규\git\BAEKJOON\백준 C\splay_tree.cpp(194,4): error C3861: 'lazy': 식별자를 찾을 수 없습니다.
-C:\Users\유완규\git\BAEKJOON\백준 C\splay_tree.cpp(199,3): error C3861: 'lazy': 식별자를 찾을 수 없습니다.
-C:\Users\유완규\git\BAEKJOON\백준 C\splay_tree.cpp(231,2): error C3861: 'interval': 식별자를 찾을 수 없습니다.
-  코드를 생성하고 있습니다...
+﻿ajou.obj : error LNK2019: _print_printBoard 함수에서 참조되는 확인할 수 없는 외부 기호
+C:\Users\유완규\git\BAEKJOON\백준 C\Debug\백준 C.exe : fatal error LNK1120: 1개의 확인할 수 없는 외부 참조입니다.
